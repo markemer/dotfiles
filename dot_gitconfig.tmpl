@@ -1,0 +1,42 @@
+[user]
+	name = Mark Anderson
+	email = { .email }
+[core]
+	excludesfile = {{ .chezmoi.homedir }}/.gitignore_global
+	autocrlf = input
+[color]
+	ui = auto
+[alias]
+	pullpush = !git pull upstream master && git push origin master
+	unstage = reset HEAD --
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false
+	keepBackup = true
+[merge]
+	tool = Kaleidoscope
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[branch]
+	autosetupmerge = true
+[commit]
+	template = {{ .chezmoi.homedir }}/.dotfiles/git/git-vanilla-message
+[tag]
+	forceSignAnnotated = true
+[pager]
+	branch = false
+	stash = false
+[pull]
+	ff = only
