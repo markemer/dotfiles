@@ -1,0 +1,106 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+ZSH_THEME="robbyrussell"
+
+# Tell ZSH where to look for custom plugins
+ZSH_CUSTOM=$HOME/.dotfiles/zsh/custom
+
+# Variables
+#export SSH_PUBLIC=$HOME/.ssh/id_rsa.pub
+#export GOPATH=/opt/go
+
+export SSH_AUTH_SOCK={{ .chezmoi.homedir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+export LOCALPATH_FILE=$HOME/.dotfiles/etc/localpath
+export LOCAL_PATHS=$(cat $LOCALPATH_FILE | /opt/local/bin/envsubst | xargs | tr " " :)
+export ETC_PATH=$(cat /etc/paths | xargs | tr " " :)
+
+export PATH=$LOCAL_PATHS:$ETC_PATH
+
+#export EDITOR='bbedit --wait'
+
+fpath=(~/.dotfiles/lib $fpath)
+#autoload all of our local functions
+#autoload -- ~/.dotfiles/lib/[^_]*(:t)
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git emer)
+
+source $ZSH/oh-my-zsh.sh
+
+# OPAM configuration
+#. /Users/meander/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# PerlBrew configuration
+#export PERLBREW_ROOT=$HOME/.perl5
+#source ~/.perl5/etc/bashrc
+#perlbrew use 5.30.0
+
+# PYENV configuration
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+
+# swiftenv configuration
+#export SWIFTENV_ROOT="$HOME/.swiftenv"
+#export PATH="$SWIFTENV_ROOT/bin:$PATH"
+#eval "$(swiftenv init -)"
+
+# SDKMan for Groovy, Java, etc
+#[[ -s "{{ .chezmoi.homedir }}/.sdkman/bin/sdkman-init.sh" ]] && source "{{ .chezmoi.homedir }}/.sdkman/bin/sdkman-init.sh"
+
+# RVM configuration
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# N configuration
+# Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" 
+
+# GHC-UP configuration
+#[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+#if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+#if [ -f '/opt/gcloud/completion.zsh.inc' ]; then . '/opt/gcloud/completion.zsh.inc'; fi
+
+# aws-cli completions
+#source "${HOME}/.pyenv/shims/aws_zsh_completer.sh"
+
+# iTerm2 Shell Integration for ZSH
+#if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then . "${HOME}/.iterm2_shell_integration.zsh"; fi
+
+# Powerline Shell
+#function powerline_precmd() {
+#    PS1="$(powerline-shell --shell zsh $?)"
+#}
+
+# function install_powerline_precmd() {
+#   for s in "${precmd_functions[@]}"; do
+#     if [ "$s" = "powerline_precmd" ]; then
+#       return
+#     fi
+#   done
+#   precmd_functions+=(powerline_precmd)
+# }
+
+# if [ "$TERM" != "linux" ]; then
+#     install_powerline_precmd
+# fi
+
+# aliases
+source "${HOME}/.dotfiles/zsh/zalias"
+
+# nostromo [section begin]
+# eval "$(nostromo completion)"
+# nostromo [section end]
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
