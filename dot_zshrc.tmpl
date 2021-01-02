@@ -9,7 +9,7 @@ ZSH_THEME="robbyrussell"
 ZSH_CUSTOM={{ .chezmoi.homedir }}/.dotfiles/zsh/custom
 
 # Variables
-#export SSH_PUBLIC={{ .chezmoi.homedir }}/.ssh/id_rsa.pub
+export SSH_PUBLIC={{ .chezmoi.homedir }}/.ssh/id_rsa.pub
 #export GOPATH=/opt/go
 
 export SSH_AUTH_SOCK={{ .chezmoi.homedir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
@@ -19,9 +19,9 @@ export ETC_PATH=$(cat /etc/paths | xargs | tr " " :)
 
 export PATH=$LOCAL_PATHS:$ETC_PATH
 
-export EDITOR='code --wait'
+export EDITOR='bbedit --wait'
 
-fpath=(~/.dotfiles/lib $fpath)
+fpath=({{ .chezmoi.homedir }}/.local/lib/zsh-custom $fpath)
 #autoload all of our local functions
 #autoload -- ~/.dotfiles/lib/[^_]*(:t)
 
