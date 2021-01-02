@@ -10,7 +10,7 @@ ZSH_CUSTOM={{ .chezmoi.homedir }}/.dotfiles/zsh/custom
 
 # Variables
 export SSH_PUBLIC={{ .chezmoi.homedir }}/.ssh/id_rsa.pub
-#export GOPATH=/opt/go
+export GOPATH={{ .optpath }}/go
 
 export SSH_AUTH_SOCK={{ .chezmoi.homedir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 export LOCALPATH_FILE={{ .chezmoi.homedir }}/.dotfiles/etc/localpath
@@ -21,9 +21,9 @@ export PATH=$LOCAL_PATHS:$ETC_PATH
 
 export EDITOR='bbedit --wait'
 
+# Autoload all of our local functions
 fpath=({{ .chezmoi.homedir }}/.local/lib/zsh-custom $fpath)
-#autoload all of our local functions
-#autoload -- ~/.dotfiles/lib/[^_]*(:t)
+autoload -- {{ .chezmoi.homedir }}/.local/lib/zsh-custom/[^_]*(:t)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
