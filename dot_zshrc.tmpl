@@ -36,44 +36,47 @@ source $ZSH/oh-my-zsh.sh
 #. /Users/meander/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # PerlBrew configuration
-#export PERLBREW_ROOT={{ .chezmoi.homedir }}/.perl5
-#source ~/.perl5/etc/bashrc
-#perlbrew use 5.30.0
+export PERLBREW_ROOT={{ .chezmoi.homedir }}/.perl5
+source ~/.perl5/etc/bashrc
+perlbrew use 5.32.0
 
 # PYENV configuration
 export PATH="{{ .chezmoi.homedir }}/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 
 # swiftenv configuration
-#export SWIFTENV_ROOT="{{ .chezmoi.homedir }}/.swiftenv"
-#export PATH="$SWIFTENV_ROOT/bin:$PATH"
-#eval "$(swiftenv init -)"
+export SWIFTENV_ROOT="{{ .chezmoi.homedir }}/.swiftenv"
+export PATH="$SWIFTENV_ROOT/bin:$PATH"
+eval "$(swiftenv init -)"
 
 # SDKMan for Groovy, Java, etc
-#[[ -s "{{ .chezmoi.homedir }}/.sdkman/bin/sdkman-init.sh" ]] && source "{{ .chezmoi.homedir }}/.sdkman/bin/sdkman-init.sh"
+[[ -s "{{ .chezmoi.homedir }}/.sdkman/bin/sdkman-init.sh" ]] && source "{{ .chezmoi.homedir }}/.sdkman/bin/sdkman-init.sh"
 
 # RVM configuration
-export PATH="$PATH:{{ .chezmoi.homedir }}/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "{{ .chezmoi.homedir }}/.rvm/scripts/rvm" ]] && source "{{ .chezmoi.homedir }}/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Add RVM to PATH for scripting
+export PATH="$PATH:{{ .chezmoi.homedir }}/.rvm/bin"
+# Load RVM into a shell session *as a function*
+[[ -s "{{ .chezmoi.homedir }}/.rvm/scripts/rvm" ]] && source "{{ .chezmoi.homedir }}/.rvm/scripts/rvm"
 
 # N configuration
 # Added by n-install (see http://git.io/n-install-repo).
 export N_PREFIX="{{ .chezmoi.homedir }}/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" 
 
 # GHC-UP configuration
-#[ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homedir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homedir }}}/.ghcup/env"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homedir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homedir }}}/.ghcup/env"
 
 # The next line updates PATH for the Google Cloud SDK.
-#if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi
+if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-#if [ -f '/opt/gcloud/completion.zsh.inc' ]; then . '/opt/gcloud/completion.zsh.inc'; fi
+if [ -f '/opt/gcloud/completion.zsh.inc' ]; then . '/opt/gcloud/completion.zsh.inc'; fi
 
 # aws-cli completions
-#source "{{ .chezmoi.homedir }}/.pyenv/shims/aws_zsh_completer.sh"
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
 
 # iTerm2 Shell Integration for ZSH
-#if [ -e "{{ .chezmoi.homedir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .chezmoi.homedir }}/.iterm2_shell_integration.zsh"; fi
+if [ -e "{{ .chezmoi.homedir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .chezmoi.homedir }}/.iterm2_shell_integration.zsh"; fi
 
 # Powerline Shell
 #function powerline_precmd() {
@@ -99,8 +102,3 @@ source "{{ .chezmoi.homedir }}/.dotfiles/zsh/zalias"
 # nostromo [section begin]
 # eval "$(nostromo completion)"
 # nostromo [section end]
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '{{ .chezmoi.homedir }}/Dropbox/My Mac ({{ .chezmoi.hostname }})/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
