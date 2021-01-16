@@ -25,12 +25,12 @@ end)
 
 function mouseHighlight()
     -- Delete an existing highlight if it exists
-    if mouseCircle then
-        mouseCircle:delete()
-        if mouseCircleTimer then
-            mouseCircleTimer:stop()
-        end
-    end
+   if mouseCircle then
+       mouseCircle:delete()
+       if mouseCircleTimer then
+           mouseCircleTimer:stop()
+       end
+   end
     -- Get the current co-ordinates of the mouse pointer
     mousepoint = hs.mouse.getAbsolutePosition()
     -- Prepare a big red circle around the mouse pointer
