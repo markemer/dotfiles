@@ -6,18 +6,19 @@ ZSH={{ .chezmoi.homedir }}/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Tell ZSH where to look for custom plugins
-ZSH_CUSTOM={{ .chezmoi.homedir }}/.dotfiles/zsh/custom
+ZSH_CUSTOM={{ .chezmoi.homedir }}/{{ .libpath }}/zsh-custom
 
 # Variables
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk15/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk8/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk15/Contents/Home
 
 export SSH_PUBLIC={{ .chezmoi.homedir }}/.ssh/id_rsa.pub
 export GOPATH={{ .optpath }}/go
 export FLUTTER_PATH={{ .optpath }}/flutter/bin
 
 export SSH_AUTH_SOCK={{ .chezmoi.homedir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-export LOCALPATH_FILE={{ .chezmoi.homedir }}/.dotfiles/etc/localpath
-export LOCAL_PATHS=$(cat $LOCALPATH_FILE | /opt/local/bin/envsubst | xargs | tr " " :)
+export LOCALPATH_FILE={{ .chezmoi.homedir }}/{{ .etcpath }}/localpath
+export LOCAL_PATHS=$(cat $LOCALPATH_FILE | xargs | tr " " :)
 export ETC_PATH=$(cat /etc/paths | xargs | tr " " :)
 
 export PATH=$LOCAL_PATHS:$ETC_PATH:$FLUTTER_PATH
@@ -25,8 +26,8 @@ export PATH=$LOCAL_PATHS:$ETC_PATH:$FLUTTER_PATH
 export EDITOR='bbedit --wait'
 
 # Autoload all of our local functions
-fpath=({{ .chezmoi.homedir }}/.local/lib/zsh-custom $fpath)
-autoload -- {{ .chezmoi.homedir }}/.local/lib/zsh-custom/[^_]*(:t)
+fpath=({{ .chezmoi.homedir }}/{{ .libpath }}/zsh-custom $fpath)
+autoload -- {{ .chezmoi.homedir }}/{{ .libpath }}/zsh-custom/[^_]*(:t)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
