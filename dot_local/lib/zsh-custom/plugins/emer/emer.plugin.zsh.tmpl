@@ -7,11 +7,6 @@ function cdp() {
     cd $(port dir ${portname})
 }
 
-function macver() {
-    echo "macOS $(sw_vers -productVersion) $(sw_vers -buildVersion)" 
-    echo "Xcode $(xcodebuild -version | awk '{print $NF}' | tr '\n' ' ')"
-}
-
 function cenv() {
     case "$1" in
     print)
@@ -37,12 +32,17 @@ function cenv() {
     esac
 }
 
-func cpsshkey() {
+function cpsshkey() {
     SSH_PUBLIC={{ .chezmoi.homedir }}/.ssh/id_rsa.pub
     ssh $1 'cat >> .ssh/authorized_keys' < $SSH_PUBLIC
 }
 
-func xman() {
+function macver() {
+    echo "macOS $(sw_vers -productVersion) $(sw_vers -buildVersion)" 
+    echo "Xcode $(xcodebuild -version | awk '{print $NF}' | tr '\n' ' ')"
+}
+
+function xman() {
     case "$1" in
     pdf)
         man -t "$2" | open -f -a /Applications/Preview.app
@@ -53,7 +53,7 @@ func xman() {
         man $2 | bbedit -
         ;;
     *)
-        echo "Usage: $0 {print|unset}"
+        echo "Usage: $0 {pdf|text}"
         ;;
     esac
 }

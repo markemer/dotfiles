@@ -13,7 +13,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk8/Contents/Home
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk15/Contents/Home
 
 export SSH_PUBLIC={{ .chezmoi.homedir }}/.ssh/id_rsa.pub
-export GOPATH={{ .optpath }}/go
 export FLUTTER_PATH={{ .optpath }}/flutter/bin
 
 export SSH_AUTH_SOCK={{ .chezmoi.homedir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
@@ -37,7 +36,7 @@ plugins=(git emer)
 source $ZSH/oh-my-zsh.sh
 
 # OPAM configuration
-#. /Users/meander/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. {{ .chezmoi.homedir }}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # PerlBrew configuration
 export PERLBREW_ROOT={{ .chezmoi.homedir }}/.perl5
@@ -64,10 +63,13 @@ export PATH="$PATH:{{ .chezmoi.homedir }}/.rvm/bin"
 
 # N configuration
 # Added by n-install (see http://git.io/n-install-repo).
-export N_PREFIX="{{ .chezmoi.homedir }}/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" 
+export N_PREFIX="{{ .chezmoi.homedir }}/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # GHC-UP configuration
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homedir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homedir }}}/.ghcup/env"
+
+# GVM for go installs
+if [ -f '{{ .chezmoi.homedir }}/.gvm/scripts/gvm' ]; then . '{{ .chezmoi.homedir }}/.gvm/scripts/gvm'; fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi
@@ -83,22 +85,22 @@ complete -C '/usr/local/bin/aws_completer' aws
 if [ -e "{{ .chezmoi.homedir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .chezmoi.homedir }}/.iterm2_shell_integration.zsh"; fi
 
 # Powerline Shell
-#function powerline_precmd() {
-#    PS1="$(powerline-shell --shell zsh $?)"
-#}
+function powerline_precmd() {
+    PS1="$(powerline-shell --shell zsh $?)"
+}
 
-# function install_powerline_precmd() {
-#   for s in "${precmd_functions[@]}"; do
-#     if [ "$s" = "powerline_precmd" ]; then
-#       return
-#     fi
-#   done
-#   precmd_functions+=(powerline_precmd)
-# }
+function install_powerline_precmd() {
+   for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
 
-# if [ "$TERM" != "linux" ]; then
-#     install_powerline_precmd
-# fi
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
 
 # aliases
 source "{{ .chezmoi.homedir }}/.dotfiles/zsh/zalias"
