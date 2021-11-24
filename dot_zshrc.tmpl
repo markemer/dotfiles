@@ -22,7 +22,7 @@ export ETC_PATH=$(cat /etc/paths | xargs | tr " " :)
 
 export PATH=$LOCAL_PATHS:$ETC_PATH:$FLUTTER_PATH
 
-export EDITOR='bbedit --wait'
+export EDITOR='code --wait'
 
 # Autoload all of our local functions
 fpath=({{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom $fpath)

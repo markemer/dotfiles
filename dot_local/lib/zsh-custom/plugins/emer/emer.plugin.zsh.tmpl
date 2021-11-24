@@ -66,3 +66,18 @@ function gem() {
 		command gem "$@"
 	fi
 }
+
+function macname() {
+	computerName=$1
+	if [[ $computerName == "" ]]; then
+        echo "ComputerName: $(scutil --get ComputerName)"
+        echo "HostName: $(scutil --get HostName)"
+        echo "LocalHostName $(scutil --get LocalHostName)"
+        echo "NetBIOSName: $(defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName)"
+    else    
+    	sudo scutil --set ComputerName "${computerName}"
+		sudo scutil --set HostName "${computerName}"
+		sudo scutil --set LocalHostName "${computerName}"
+		sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${computerName}"
+	fi
+}
