@@ -2,7 +2,7 @@
 	name = Mark Anderson
 	email = {{ .email }}
 [core]
-	excludesfile = {{ .chezmoi.homedir }}/.gitignore_global
+	excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
 	autocrlf = input
 [color]
 	ui = auto
@@ -31,8 +31,6 @@
 	required = true
 [branch]
 	autosetupmerge = true
-[commit]
-	template = {{ .chezmoi.homedir }}/.dotfiles/git/git-vanilla-message
 [tag]
 	forceSignAnnotated = true
 [pager]

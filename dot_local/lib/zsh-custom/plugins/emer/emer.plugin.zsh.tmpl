@@ -33,7 +33,7 @@ function cenv() {
 }
 
 function cpsshkey() {
-    SSH_PUBLIC={{ .chezmoi.homedir }}/.ssh/id_rsa.pub
+    SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
     ssh $1 'cat >> .ssh/authorized_keys' < $SSH_PUBLIC
 }
 
@@ -56,4 +56,13 @@ function xman() {
         echo "Usage: $0 {pdf|text}"
         ;;
     esac
+}
+
+function gem() {
+	if [[ $1 == "install" ]]; then
+		gemargs="$@"
+		command gem install --user-install ${gemargs:8}
+	else
+		command gem "$@"
+	fi
 }
