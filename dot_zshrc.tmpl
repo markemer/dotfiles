@@ -8,6 +8,9 @@ ZSH_THEME="robbyrussell"
 # Tell ZSH where to look for custom plugins
 ZSH_CUSTOM={{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom
 
+# Tell Oh-My-ZSH not to check, chezmoi will update
+DISABLE_AUTO_UPDATE="true"
+
 # Variables
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk8/Contents/Home
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk15/Contents/Home
@@ -103,12 +106,7 @@ if [ -e "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .ch
 # fi
 
 # aliases
-alias ls='gls --literal --color=auto --human-readable'
-alias setfile='SetFile'
-alias sport='sudo /opt/local/bin/port -ucpv'
-alias psx='ps -axwwr -o pid,user,%cpu,%mem,rss,state,start,command'
-# alias chrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-# alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
+{{ template "darwin-aliases" . }}
 
 # nostromo [section begin]
 # eval "$(nostromo completion)"
