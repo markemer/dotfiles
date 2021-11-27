@@ -58,15 +58,6 @@ function xman() {
     esac
 }
 
-function gem() {
-	if [[ $1 == "install" ]]; then
-		gemargs="$@"
-		command gem install --user-install ${gemargs:8}
-	else
-		command gem "$@"
-	fi
-}
-
 function macname() {
 	computerName=$1
 	if [[ $computerName == "" ]]; then

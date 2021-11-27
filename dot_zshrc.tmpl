@@ -60,9 +60,9 @@ source $ZSH/oh-my-zsh.sh
 
 # RVM configuration
 # Add RVM to PATH for scripting
-# export PATH="$PATH:{{ .chezmoi.homeDir }}/.rvm/bin"
-# # Load RVM into a shell session *as a function*
-# [[ -s "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm" ]] && source "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm"
+export PATH="$PATH:{{ .chezmoi.homeDir }}/.rvm/bin"
+# Load RVM into a shell session *as a function*
+[[ -s "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm" ]] && source "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm"
 
 # N configuration
 # Added by n-install (see http://git.io/n-install-repo).
@@ -111,10 +111,3 @@ if [ -e "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .ch
 # nostromo [section begin]
 # eval "$(nostromo completion)"
 # nostromo [section end]
-
-# MacPorts Gem Setup
-if hash ruby 2>/dev/null; then
-	PATH="$(ruby -rrubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
-
