@@ -47,8 +47,9 @@ source $ZSH/oh-my-zsh.sh
 # perlbrew use 5.32.0
 
 # PYENV configuration
-# export PATH="{{ .chezmoi.homeDir }}/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
+export PATH="{{ .chezmoi.homeDir }}/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 # swiftenv configuration
 # export SWIFTENV_ROOT="{{ .chezmoi.homeDir }}/.swiftenv"
