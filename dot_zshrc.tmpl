@@ -1,8 +1,8 @@
+## ZSH Stuff
 # Path to your oh-my-zsh configuration.
 ZSH={{ .chezmoi.homeDir }}/.oh-my-zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
 
 # Tell ZSH where to look for custom plugins
@@ -11,19 +11,24 @@ ZSH_CUSTOM={{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom
 # Tell Oh-My-ZSH not to check, chezmoi will update
 DISABLE_AUTO_UPDATE="true"
 
-# Variables
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk8/Contents/Home
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk15/Contents/Home
+## Variables
+# Port Installed Java Names: openjdk17-temurin
+export JAVA_NAME=openjdk17-temurin
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
-# export SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 # export FLUTTER_PATH={{ .optpath }}/flutter/bin
 
+export SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
+export GOPATH="/opt/go"
+
+export GOBIN_PATH="/opt/go/bin"
 export LOCALPATH_FILE={{ .chezmoi.homeDir }}/{{ .etcpath }}/localpath
 export LOCAL_PATHS=$(cat $LOCALPATH_FILE | xargs | tr " " :)
 export ETC_PATH=$(cat /etc/paths | xargs | tr " " :)
 
-export PATH=$LOCAL_PATHS:$ETC_PATH:$FLUTTER_PATH
+export PATH="$LOCAL_PATHS:$GOBIN_PATH:$ETC_PATH:$FLUTTER_PATH"
 
 export EDITOR='code --wait'
 
@@ -71,9 +76,6 @@ export PATH="$PATH:{{ .chezmoi.homeDir }}/.rvm/bin"
 
 # GHC-UP configuration
 # [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
-
-# GVM for go installs
-# if [ -f '{{ .chezmoi.homeDir }}/.gvm/scripts/gvm' ]; then . '{{ .chezmoi.homeDir }}/.gvm/scripts/gvm'; fi
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi
