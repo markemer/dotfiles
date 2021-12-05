@@ -4,3 +4,9 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+[".chisel"]
+    type = "archive"
+    url = "https://github.com/facebook/chisel/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
