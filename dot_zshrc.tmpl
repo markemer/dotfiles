@@ -72,7 +72,7 @@ export PATH="$PATH:{{ .chezmoi.homeDir }}/.rvm/bin"
 
 # N configuration
 # Added by n-install (see http://git.io/n-install-repo).
-# export N_PREFIX="{{ .chezmoi.homeDir }}/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export N_PREFIX="{{ .chezmoi.homeDir }}/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # GHC-UP configuration
 # [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
