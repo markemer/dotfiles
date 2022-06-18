@@ -75,7 +75,7 @@ export N_PREFIX="{{ .chezmoi.homeDir }}/.n";
 export PATH="$N_PREFIX/bin:$PATH"
 
 # GHC-UP configuration
-# [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi
