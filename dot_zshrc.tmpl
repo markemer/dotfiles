@@ -16,7 +16,7 @@ DISABLE_AUTO_UPDATE="true"
 export JAVA_NAME=openjdk17-temurin
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
-# export FLUTTER_PATH={{ .optpath }}/flutter/bin
+export FLUTTER_PATH={{ .optpath }}/flutter/bin
 
 export SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
@@ -39,7 +39,7 @@ autoload -- {{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom/[^_]*(:t)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git emer)
+plugins=(git macos emer)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,7 +49,7 @@ source $ZSH/oh-my-zsh.sh
 # PerlBrew configuration
 export PERLBREW_ROOT={{ .chezmoi.homeDir }}/.perl5
 source ~/.perl5/etc/bashrc
-perlbrew use 5.34.0
+perlbrew use 5.36.0
 
 # PYENV configuration
 export PATH="{{ .chezmoi.homeDir }}/.pyenv/bin:$PATH"
@@ -76,6 +76,9 @@ export PATH="$N_PREFIX/bin:$PATH"
 
 # GHC-UP configuration
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
+
+# GVM configuration
+[[ -s "{{ .chezmoi.homeDir }}/.gvm/scripts/gvm" ]] && source "{{ .chezmoi.homeDir }}/.gvm/scripts/gvm"
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi

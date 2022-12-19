@@ -4,12 +4,12 @@
 ;; Author: Christopher R. Brown ( mrlordvondoombraun@gmail.com )
 ;; Version: 0.0.4
 ;; Created: 19 SEP 2017
-;; Keywords: major-mode, remind, reminder, calendar, cli, command-line 
+;; Keywords: major-mode, remind, reminder, calendar, cli, command-line
 ;; Homepage: teamawesome3.dlinkddns.com
 
 ;;; License:
 
-;;  This file is not part of GNU Emacs. This program is free software- 
+;;  This file is not part of GNU Emacs. This program is free software-
 ;;  you can redistribute it and/or modify
 ;;  it under the terms of the GNU General Public License as published by
 ;;  the Free Software Foundation, either version 3 of the License, or
@@ -22,13 +22,13 @@
 
 ;;    You should have received a copy of the GNU General Public License
 ;;    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
+
 ;;; Commentary:
 
-;; This is essentially a port of the Vim Syntax File distributed with the 
+;; This is essentially a port of the Vim Syntax File distributed with the
 ;;   Remind software as authored by Davide Alberani (18 September 2009).
 ;;   I also leaned heavily on the guidance provided by Xah Lee in the How to
-;;   Write a[n] Emacs Major Mode tutorials found at 
+;;   Write a[n] Emacs Major Mode tutorials found at
 ;;   http://ergoemacs.org/emacs/elisp_syntax_coloring.html (25 Oct 2016). Both of
 ;;   their efforts are greatly appreciated.
 
@@ -37,7 +37,7 @@
 ;;   Currently, this major-mode includes syntax highlighting for most commands and features.
 ;;   To use, download into a location on your PATH (such as ~/.emacs.d/elpa or/usr/local/bin).
 ;;   If you are not what sure is on your PATH, then type "echo $PATH" at the terminal and pick
-;;   one of the listed locations. You can also add a file to the PATH by typing 
+;;   one of the listed locations. You can also add a file to the PATH by typing
 ;;   "export PATH=$PATH:/path/to/file/" where /path/to/file is the absolute file path of your
 ;;   choosing. Also, add "(add-to-list 'load-path '/path/to/file/)'" and "(require 'remind-mode)"
 ;;   to your .emacs file or other intitialization document.
@@ -47,7 +47,7 @@
 
 ;;   Please email me at mrlordvondoombraun@gmail.com with comments questions or raise an issue
 ;;   github.
-   
+
 ;; TODO
 ;;   - Support Highlighting for Scripts
 ;;   - Export/Import as org file
@@ -141,7 +141,7 @@
     ("#.*$" . 'font-lock-warning-face)
     ("[0-9]" . 'font-lock-warning-face)
     )
-  '("\\.rem$")
+  '("\\.rem(ind)?$")
   nil
   "A mode for editing Remind files"
   )
