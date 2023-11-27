@@ -1,6 +1,7 @@
 [user]
 	name = Mark Anderson
 	email = {{ .email }}
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJRouhc5ge7J910RBhMyra4SUEa3gLCdbhlSEiD+V6gN
 [core]
 	excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
 	autocrlf = input
@@ -41,3 +42,8 @@
 	ff = true
 [commit]
 	template = {{ .chezmoi.homeDir }}/{{ .etcpath }}/commit-messages/git-vanilla-message
+	gpgsign = true
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"

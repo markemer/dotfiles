@@ -47,9 +47,9 @@ source $ZSH/oh-my-zsh.sh
 . {{ .chezmoi.homeDir }}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # PerlBrew configuration
-export PERLBREW_ROOT={{ .chezmoi.homeDir }}/.perl5
-source ~/.perl5/etc/bashrc
-perlbrew use 5.36.0
+# export PERLBREW_ROOT={{ .chezmoi.homeDir }}/.perl5
+# source ~/.perl5/etc/bashrc
+# perlbrew use 5.36.0
 
 # PYENV configuration
 export PATH="{{ .chezmoi.homeDir }}/.pyenv/bin:$PATH"
@@ -70,9 +70,9 @@ export PATH="$PATH:{{ .chezmoi.homeDir }}/.rvm/bin"
 # Load RVM into a shell session *as a function*
 [[ -s "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm" ]] && source "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm"
 
-# N configuration
-export N_PREFIX="{{ .chezmoi.homeDir }}/.n";
-export PATH="$N_PREFIX/bin:$PATH"
+# Volta (node) configuration
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # GHC-UP configuration
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
@@ -113,6 +113,9 @@ fi
 
 # aliases
 {{ template "darwin-aliases" . }}
+
+# 1password shell plugins
+source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
 
 # nostromo [section begin]
 # eval "$(nostromo completion)"
