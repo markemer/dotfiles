@@ -1,49 +1,65 @@
-[user]
-	name = Mark Anderson
-	email = {{ .email }}
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJRouhc5ge7J910RBhMyra4SUEa3gLCdbhlSEiD+V6gN
-[core]
-	excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
-	autocrlf = input
-	editor = code --wait
-[color]
-	ui = auto
 [alias]
 	pullpush = !git pull upstream master && git push origin master
 	unstage = reset HEAD --
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[branch]
+	autosetupmerge = true
+	sort = comitterdate
+[color]
+	ui = auto
+[commit]
+	gpgsign = true
+	template = {{ .chezmoi.homeDir }}/{{ .etcpath }}/commit-messages/git-vanilla-message
+	verbose = true
+[core]
+	autocrlf = input
+	editor = code --wait
+	excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
 [diff]
+	algorithm = histogram
 	tool = Kaleidoscope
 [difftool]
+	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[filter "lfs"]
+	clean = git-lfs clean %f
+	required = true
+	smudge = git-lfs smudge %f
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[help]
+	autocorrect = prompt
+[init]
+	defaultBranch = main
+[merge]
+	conflictstyle = zdiff3
+	tool = Kaleidoscope
+[mergetool]
+	keepBackup = true
 	prompt = false
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
-[mergetool]
-	prompt = false
-	keepBackup = true
-[merge]
-	tool = Kaleidoscope
-[push]
-	default = simple
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
-[branch]
-	autosetupmerge = true
-[tag]
-	forceSignAnnotated = true
 [pager]
 	branch = false
 	stash = false
 [pull]
 	ff = true
-[commit]
-	template = {{ .chezmoi.homeDir }}/{{ .etcpath }}/commit-messages/git-vanilla-message
-	gpgsign = true
-[gpg]
-  format = ssh
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[push]
+	autoSetupRemote = true
+	default = current
+[rebase]
+	autosquash = true
+	autostash = true
+[rerere]
+	enabled = true
+[tag]
+	forceSignAnnotated = true
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
+[user]
+	email = {{ .email }}
+	name = Mark Anderson
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJRouhc5ge7J910RBhMyra4SUEa3gLCdbhlSEiD+V6gN
