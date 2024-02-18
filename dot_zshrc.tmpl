@@ -117,6 +117,9 @@ fi
 # 1password shell plugins
 source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
 
+# Setup Atuin
+eval "$(atuin init zsh)"
+
 # nostromo [section begin]
 # eval "$(nostromo completion)"
 # nostromo [section end]
