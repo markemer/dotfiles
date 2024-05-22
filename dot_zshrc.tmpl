@@ -1,4 +1,6 @@
-## ZSH Stuff
+# Set this before oh-my-zsh to move zcompdump files
+export ZSH_COMPDUMP={{ .chezmoi.homeDir }}/cache/zsh/.zcompdump-$HOST
+
 # Path to your oh-my-zsh configuration.
 ZSH={{ .chezmoi.homeDir }}/.oh-my-zsh
 
@@ -55,6 +57,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH="{{ .chezmoi.homeDir }}/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+
+# Cargo/Rustup Setup
+source "{{ .chezmoi.homeDir }}/.cargo/env"
 
 # swiftenv configuration
 # export SWIFTENV_ROOT="{{ .chezmoi.homeDir }}/.swiftenv"
