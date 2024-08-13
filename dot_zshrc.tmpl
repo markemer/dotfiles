@@ -49,9 +49,9 @@ source $ZSH/oh-my-zsh.sh
 . {{ .chezmoi.homeDir }}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # PerlBrew configuration
-# export PERLBREW_ROOT={{ .chezmoi.homeDir }}/.perl5
-# source ~/.perl5/etc/bashrc
-# perlbrew use 5.36.0
+export PERLBREW_ROOT={{ .chezmoi.homeDir }}/.perl5
+source ~/.perl5/etc/bashrc
+perlbrew use 5.40.0
 
 # PYENV configuration
 export PATH="{{ .chezmoi.homeDir }}/.pyenv/bin:$PATH"
