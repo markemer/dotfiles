@@ -7,6 +7,15 @@ function cdp() {
     cd $(port dir ${portname})
 }
 
+function codep() {
+    portname=$1
+    if [[ $portname == "" ]]; then
+        echo "Provide a portname"
+        return
+    fi
+    /usr/local/bin/code $(port file ${portname})
+}
+
 function cenv() {
     case "$1" in
     print)
@@ -38,7 +47,7 @@ function cpsshkey() {
 }
 
 function macver() {
-    echo "macOS $(sw_vers -productVersion) $(sw_vers -buildVersion)" 
+    echo "macOS $(sw_vers -productVersion) $(sw_vers -buildVersion)"
     echo "Xcode $(xcodebuild -version | awk '{print $NF}' | tr '\n' ' ')"
 }
 
@@ -48,8 +57,8 @@ function xman() {
         man -t "$2" | open -f -a /Applications/Preview.app
         ;;
     text)
-        MANWIDTH=160 
-        MANPAGER='col -bx' 
+        MANWIDTH=160
+        MANPAGER='col -bx'
         man $2 | bbedit -
         ;;
     *)
@@ -65,7 +74,7 @@ function macname() {
         echo "HostName: $(scutil --get HostName)"
         echo "LocalHostName $(scutil --get LocalHostName)"
         echo "NetBIOSName: $(defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName)"
-    else    
+    else
     	sudo scutil --set ComputerName "${computerName}"
 		sudo scutil --set HostName "${computerName}"
 		sudo scutil --set LocalHostName "${computerName}"
