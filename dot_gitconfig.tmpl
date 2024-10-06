@@ -27,8 +27,9 @@
 	smudge = git-lfs smudge %f
 [gpg]
 	format = ssh
+	program = /opt/local/bin/gpg2
 [gpg "ssh"]
-	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [help]
 	autocorrect = prompt
 [init]
@@ -57,9 +58,7 @@
 	enabled = true
 [tag]
 	forceSignAnnotated = true
-[url "git@github.com:"]
-	insteadOf = "https://github.com/"
 [user]
 	email = {{ .email }}
 	name = Mark Anderson
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJRouhc5ge7J910RBhMyra4SUEa3gLCdbhlSEiD+V6gN
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJRouhc5ge7J910RBhMyra4SUEa3gLCdbhlSEiD+V6gN Github Signing Key

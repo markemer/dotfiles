@@ -1,0 +1,8 @@
+AllCops:
+  NewCops: enable
+
+Style/StringLiterals:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
