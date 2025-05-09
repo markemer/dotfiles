@@ -18,19 +18,10 @@ DISABLE_AUTO_UPDATE="true"
 export JAVA_NAME=openjdk17-temurin
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
-export FLUTTER_PATH={{ .optpath }}/flutter/bin
-
 export SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
-export GOPATH="/opt/go"
-
-export GOBIN_PATH="/opt/go/bin"
-export LOCALPATH_FILE={{ .chezmoi.homeDir }}/{{ .etcpath }}/localpath
-export LOCAL_PATHS=$(cat $LOCALPATH_FILE | xargs | tr " " :)
-export ETC_PATH=$(cat /etc/paths | xargs | tr " " :)
-
-export PATH="$LOCAL_PATHS:$GOBIN_PATH:$ETC_PATH:$FLUTTER_PATH"
+export PATH='{{ includeTemplate "path-list" . | trim | splitList "\n" | join .chezmoi.pathListSeparator -}}'
 
 export EDITOR='code --wait'
 
@@ -48,52 +39,11 @@ source $ZSH/oh-my-zsh.sh
 # OPAM configuration
 . {{ .chezmoi.homeDir }}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# PerlBrew configuration
-export PERLBREW_ROOT={{ .chezmoi.homeDir }}/.perl5
-source ~/.perl5/etc/bashrc
-perlbrew use 5.40.0
-
-# PYENV configuration
-export PATH="{{ .chezmoi.homeDir }}/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
 # Cargo/Rustup Setup
 source "{{ .chezmoi.homeDir }}/.cargo/env"
 
-# swiftenv configuration
-# export SWIFTENV_ROOT="{{ .chezmoi.homeDir }}/.swiftenv"
-# export PATH="$SWIFTENV_ROOT/bin:$PATH"
-# eval "$(swiftenv init -)"
-
-# SDKMan for Groovy, Java, etc
-[[ -s "{{ .chezmoi.homeDir }}/.sdkman/bin/sdkman-init.sh" ]] && source "{{ .chezmoi.homeDir }}/.sdkman/bin/sdkman-init.sh"
-
-# RVM configuration
-# Add RVM to PATH for scripting
-export PATH="$PATH:{{ .chezmoi.homeDir }}/.rvm/bin"
-# Load RVM into a shell session *as a function*
-[[ -s "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm" ]] && source "{{ .chezmoi.homeDir }}/.rvm/scripts/rvm"
-
-# Volta (node) configuration
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 # GHC-UP configuration
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
-
-# GVM configuration
-[[ -s "{{ .chezmoi.homeDir }}/.gvm/scripts/gvm" ]] && source "{{ .chezmoi.homeDir }}/.gvm/scripts/gvm"
-
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/opt/gcloud/path.zsh.inc' ]; then . '/opt/gcloud/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-# if [ -f '/opt/gcloud/completion.zsh.inc' ]; then . '/opt/gcloud/completion.zsh.inc'; fi
-
-# aws-cli completions
-# autoload bashcompinit && bashcompinit
-# complete -C '/usr/local/bin/aws_completer' aws
 
 # iTerm2 Shell Integration for ZSH
 if [ -e "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh"; fi
@@ -124,6 +74,9 @@ source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
 
 # Setup Atuin
 eval "$(atuin init zsh)"
+
+# Setup Mise
+eval "$(mise activate zsh)"
 
 # nostromo [section begin]
 # eval "$(nostromo completion)"

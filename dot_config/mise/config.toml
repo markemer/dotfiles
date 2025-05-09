@@ -1,0 +1,12 @@
+[tools]
+erlang = "latest"
+go = "latest"
+node = "22"
+python = "latest"
+rust = "latest"
+usage = "latest"
+elixir = "latest"
+java = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
