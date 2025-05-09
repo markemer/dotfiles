@@ -6,3 +6,5 @@
 {{ .chezmoi.homeDir }}/Library/Android/sdk/platform-tools
 {{ .apppath }}/calibre.app/Contents/MacOS/
 {{ .usrlocal }}/share/dotnet
+{{ output "cat" "/etc/paths" -}}
+{{ .optpath }}/flutter/bin
