@@ -10,3 +10,10 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+[".local/share/mea-lldb"]
+    type = "archive"
+    url = "https://github.com/DerekSelander/LLDB/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+    include = [ "*/lldb_commands/**" ]

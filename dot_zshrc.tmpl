@@ -18,6 +18,9 @@ DISABLE_AUTO_UPDATE="true"
 export JAVA_NAME=openjdk17-temurin
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
+export GOROOT={{ .goroot }}
+export GOPATH={{ .goroot }}
+
 export SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
@@ -68,7 +71,6 @@ fi
 
 # aliases
 {{ template "darwin-aliases" . }}
-
 # 1password shell plugins
 source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
 
