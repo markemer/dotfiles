@@ -19,14 +19,14 @@ export JAVA_NAME=openjdk17-temurin
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
 export GOROOT={{ .goroot }}
-export GOPATH={{ .goroot }}
+export GOPATH=$GOROOT
 
 export SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
 export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
 export PATH='{{ includeTemplate "path-list" . | trim | splitList "\n" | join .chezmoi.pathListSeparator -}}'
 
-export EDITOR='code --wait'
+export EDITOR='vim'
 
 # Autoload all of our local functions
 fpath=({{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom $fpath)
