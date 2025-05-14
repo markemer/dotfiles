@@ -26,7 +26,7 @@ export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Se
 
 export PATH='{{ includeTemplate "path-list" . | trim | splitList "\n" | join .chezmoi.pathListSeparator -}}'
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Autoload all of our local functions
 fpath=({{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom $fpath)
