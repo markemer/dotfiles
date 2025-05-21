@@ -1,3 +1,5 @@
+alias vim=nvim
+alias vi=nvim
 alias ls='gls --literal --color=auto --human-readable'
 alias sport='sudo /opt/local/bin/port -ucpv'
 alias psx='ps -axwwr -o pid,user,%cpu,%mem,rss,state,start,command'
