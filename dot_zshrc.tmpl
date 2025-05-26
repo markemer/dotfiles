@@ -13,6 +13,7 @@ ZSH_CUSTOM={{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom
 # Tell Oh-My-ZSH not to check, chezmoi will update
 DISABLE_AUTO_UPDATE="true"
 
+{{- if eq .chezmoi.os "darwin" }}
 ## Variables
 # Port Installed Java Names: openjdk17-temurin
 export JAVA_NAME=openjdk17-temurin
@@ -20,11 +21,19 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
 export GOROOT={{ .goroot }}
 export GOPATH=$GOROOT
+{{ end }}
 
 export SSH_PUBLIC={{ .chezmoi.homeDir }}/.ssh/id_rsa.pub
-export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
+{{- if eq .chezmoi.os "darwin" }}
+export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+{{ end }}
+
+{{- if eq .chezmoi.os "darwin" }}
 export PATH='{{ includeTemplate "path-list" . | trim | splitList "\n" | join .chezmoi.pathListSeparator -}}'
+{{ else if eq .chezmoi.os "linux" }} 
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+{{ end }}
 
 export EDITOR='nvim'
 
@@ -35,7 +44,11 @@ autoload -- {{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom/[^_]*(:t)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+{{- if eq .chezmoi.os "darwin" }}
 plugins=(git macos emer)
+{{ else if eq .chezmoi.os "linux" }}
+plugins=(git emer)
+{{ end }}
 
 source $ZSH/oh-my-zsh.sh
 
@@ -48,6 +61,7 @@ source "{{ .chezmoi.homeDir }}/.cargo/env"
 # GHC-UP configuration
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
 
+{{- if eq .chezmoi.os "darwin" }}
 # iTerm2 Shell Integration for ZSH
 if [ -e "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh"; fi
 
@@ -68,9 +82,13 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
+{{ end }} 
 
+{{- if eq .chezmoi.os "darwin" }}
 # aliases
 {{ template "darwin-aliases" . }}
+{{ end }}
+
 # 1password shell plugins
 source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
 
