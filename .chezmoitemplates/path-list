@@ -1,5 +1,6 @@
 {{ .chezmoi.homeDir }}/.cargo/bin
 {{ .chezmoi.homeDir }}/.local/bin
+{{- if eq .chezmoi.os "darwin" -}}
 {{ .optpath }}/bin
 {{ .optpath }}/local/bin
 {{ .optpath }}/local/libexec/gnubin
@@ -8,3 +9,4 @@
 {{ .usrlocal }}/share/dotnet
 {{ output "cat" "/etc/paths" -}}
 {{ .optpath }}/flutter/bin
+{{- end -}}
