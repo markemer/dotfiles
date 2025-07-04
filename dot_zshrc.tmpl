@@ -89,8 +89,10 @@ fi
 {{ template "darwin-aliases" . }}
 {{ end }}
 
+{{- if eq .chezmoi.os "darwin" }}
 # 1password shell plugins
 source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
+{{ end }}
 
 # Setup Atuin
 eval "$(atuin init zsh)"
