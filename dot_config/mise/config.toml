@@ -9,6 +9,9 @@ elixir = "latest"
 java = "latest"
 swift = "latest"
 tuist = "latest"
+"npm:hookdeck-cli" = "latest"
+pipx = "latest"
+"pipx:powerline-shell" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
