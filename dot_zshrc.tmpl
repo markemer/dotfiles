@@ -52,6 +52,9 @@ plugins=(git emer)
 
 source $ZSH/oh-my-zsh.sh
 
+# AWS Configuration
+export AWS_PROFILE="EmerNet"
+
 # OPAM configuration
 . {{ .chezmoi.homeDir }}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
