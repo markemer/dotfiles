@@ -12,8 +12,11 @@ tuist = "latest"
 "npm:hookdeck-cli" = "latest"
 pipx = "latest"
 "pipx:powerline-shell" = "latest"
+npm = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
-ignored_config_paths = ["/Users/mark/.local/config/share/chezmoi/dot_config/mise"]
+ignored_config_paths = [
+  "/Users/mark/.local/config/share/chezmoi/dot_config/mise",
+]
 experimental = true
