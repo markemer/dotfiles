@@ -1,7 +1,7 @@
 [tools]
 erlang = "latest"
 go = "latest"
-node = "22"
+node = "latest"
 python = "latest"
 rust = "latest"
 usage = "latest"
@@ -9,10 +9,12 @@ elixir = "latest"
 java = "latest"
 swift = "latest"
 tuist = "latest"
-"npm:hookdeck-cli" = "latest"
 pipx = "latest"
-"pipx:powerline-shell" = "latest"
 npm = "latest"
+"pipx:powerline-shell" = "latest"
+"npm:hookdeck-cli" = "latest"
+"npm:ghost-cli" = "latest"
+"cargo:cargo-bump" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
