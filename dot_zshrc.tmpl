@@ -31,7 +31,7 @@ export SSH_AUTH_SOCK={{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Se
 
 {{- if eq .chezmoi.os "darwin" }}
 export PATH='{{ includeTemplate "path-list" . | trim | splitList "\n" | join .chezmoi.pathListSeparator -}}'
-{{ else if eq .chezmoi.os "linux" }} 
+{{ else if eq .chezmoi.os "linux" }}
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 {{ end }}
 
@@ -91,7 +91,7 @@ if [ -e "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .ch
 # if [ "$TERM" != "linux" ]; then
 #     install_powerline_precmd
 # fi
-{{ end }} 
+{{ end }}
 
 {{- if eq .chezmoi.os "darwin" }}
 # aliases

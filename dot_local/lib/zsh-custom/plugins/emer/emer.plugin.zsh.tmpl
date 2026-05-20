@@ -81,3 +81,7 @@ function macname() {
 		sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${computerName}"
 	fi
 }
+
+function ppath() {
+    echo $PATH | tr ":" "\n"
+}
