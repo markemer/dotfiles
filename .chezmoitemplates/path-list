@@ -1,5 +1,6 @@
 {{ .chezmoi.homeDir }}/.cargo/bin
 {{ .chezmoi.homeDir }}/.local/bin
+{{ .chezmoi.homeDir }}/.atuin/bin
 {{ if eq .chezmoi.os "darwin" -}}
 {{ .optpath }}/bin
 {{ .optpath }}/local/bin

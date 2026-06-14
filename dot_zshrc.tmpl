@@ -73,24 +73,6 @@ source "{{ .chezmoi.homeDir }}/.cargo/env"
 {{- if eq .chezmoi.os "darwin" }}
 # iTerm2 Shell Integration for ZSH
 if [ -e "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh"; fi
-
-# Powerline Shell
-# function powerline_precmd() {
-#     PS1="$(powerline-shell --shell zsh $?)"
-# }
-
-# function install_powerline_precmd() {
-#    for s in "${precmd_functions[@]}"; do
-#     if [ "$s" = "powerline_precmd" ]; then
-#       return
-#     fi
-#   done
-#   precmd_functions+=(powerline_precmd)
-# }
-
-# if [ "$TERM" != "linux" ]; then
-#     install_powerline_precmd
-# fi
 {{ end }}
 
 {{- if eq .chezmoi.os "darwin" }}
@@ -106,8 +88,8 @@ source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
 # Setup Atuin
 eval "$(atuin init zsh)"
 
-# Setup Mise
-eval "$(mise activate zsh)"
+# Setup Mise -- disabled on macOS 27 for now
+# eval "$(mise activate zsh)"
 
 # Setup Starship
 eval "$(starship init zsh)"
