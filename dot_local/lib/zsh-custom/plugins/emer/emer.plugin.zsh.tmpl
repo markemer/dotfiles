@@ -75,10 +75,10 @@ function macname() {
         echo "LocalHostName $(scutil --get LocalHostName)"
         echo "NetBIOSName: $(defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName)"
     else
-    	sudo scutil --set ComputerName "${computerName}"
-		sudo scutil --set HostName "${computerName}"
-		sudo scutil --set LocalHostName "${computerName}"
-		sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${computerName}"
+      	sudo scutil --set ComputerName "${computerName}"
+		    sudo scutil --set HostName "${computerName}"
+		    sudo scutil --set LocalHostName "${computerName}"
+		    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${computerName}"
 	fi
 }
 

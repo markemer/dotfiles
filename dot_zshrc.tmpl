@@ -51,7 +51,7 @@ autoload -- {{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom/[^_]*(:t)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 {{- if eq .chezmoi.os "darwin" }}
-plugins=(git macos emer)
+plugins=(git macos iterm2 emer)
 {{ else if eq .chezmoi.os "linux" }}
 plugins=(git emer)
 {{ end }}
@@ -71,11 +71,6 @@ source "{{ .chezmoi.homeDir }}/.cargo/env"
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:={{ .chezmoi.homeDir }}}/.ghcup/env"
 
 {{- if eq .chezmoi.os "darwin" }}
-# iTerm2 Shell Integration for ZSH
-if [ -e "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh" ]; then . "{{ .chezmoi.homeDir }}/.iterm2_shell_integration.zsh"; fi
-{{ end }}
-
-{{- if eq .chezmoi.os "darwin" }}
 # aliases
 {{ template "darwin-aliases" . }}
 {{ end }}
@@ -88,8 +83,8 @@ source {{ .chezmoi.homeDir }}/.config/op/plugins.sh
 # Setup Atuin
 eval "$(atuin init zsh)"
 
-# Setup Mise -- disabled on macOS 27 for now
-# eval "$(mise activate zsh)"
+# Setup Mise 
+eval "$(mise activate zsh)"
 
 # Setup Starship
 eval "$(starship init zsh)"
