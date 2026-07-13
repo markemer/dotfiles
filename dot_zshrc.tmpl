@@ -61,6 +61,9 @@ source $ZSH/oh-my-zsh.sh
 # AWS Configuration
 export AWS_PROFILE="EmerNet"
 
+# GitHub Token Addition
+export GITHUB_TOKEN=`gh auth token`
+
 # OPAM configuration
 . {{ .chezmoi.homeDir }}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
@@ -90,5 +93,5 @@ eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 
 # nostromo [section begin]
-eval "$(nostromo completion)"
+eval "$(nostromo completion zsh)"
 # nostromo [section end]
