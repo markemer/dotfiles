@@ -1,0 +1,53 @@
+name: manifest
+source: file:/Users/mark/.nostromo/ships/manifest.yaml
+path: /Users/mark/.nostromo/ships/manifest.yaml
+version:
+  uuid: ec5eefec-5bf2-4700-8942-bb35f4b17e49
+  semver: dev
+  gitcommit: none
+  builddate: unknown
+config:
+  verbose: false
+  aliasesonly: false
+  mode: 0
+  backupcount: 10
+commands:
+  dev:
+    keypath: dev
+    name: ""
+    alias: dev
+    aliasonly: false
+    description: ""
+    commands:
+      xcode:
+        keypath: dev.xcode
+        name: ""
+        alias: xcode
+        aliasonly: false
+        description: ""
+        commands:
+          clear:
+            keypath: dev.xcode.clear
+            name: rm -r ~/Library/Developer/Xcode/DerivedData/*
+            alias: clear
+            aliasonly: false
+            description: Deletes derived data
+            commands: {}
+            subs: {}
+            code:
+              language: sh
+              snippet: ""
+            mode: 0
+            disabled: false
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 0
+        disabled: false
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
+    disabled: false

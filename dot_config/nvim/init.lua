@@ -2,7 +2,7 @@ require("config.lazy")
 
  local treeconfig = {
    filters = {
-     custom = { "^.git$" }
+     custom = { "^.git$", ".DS_Store" }
    },
  }
  require("nvim-tree").setup(treeconfig)

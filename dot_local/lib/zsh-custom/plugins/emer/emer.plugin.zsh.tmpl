@@ -1,5 +1,5 @@
 function cdp() {
-    portname=$1
+    local portname=$1
     if [[ $portname == "" ]]; then
         echo "Provide a portname"
         return
@@ -8,7 +8,7 @@ function cdp() {
 }
 
 function codep() {
-    portname=$1
+    local portname=$1
     if [[ $portname == "" ]]; then
         echo "Provide a portname"
         return
@@ -54,12 +54,11 @@ function macver() {
 function xman() {
     case "$1" in
     pdf)
-        man -t "$2" | open -f -a /Applications/Preview.app
+        man -t "$2" | open -f -a /System/Applications/Preview.app
         ;;
     text)
         MANWIDTH=160
-        MANPAGER='col -bx'
-        man $2 | bbedit -
+        man -c $2 | col -bx | bbedit -
         ;;
     *)
         echo "Usage: $0 {pdf|text}"
@@ -84,4 +83,8 @@ function macname() {
 
 function ppath() {
     echo $PATH | tr ":" "\n"
+}
+
+function nvide() {
+    /Applications/Neovide.app/Contents/MacOS/neovide $1 &
 }
