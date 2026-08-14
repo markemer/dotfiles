@@ -13,6 +13,7 @@ npm = "latest"
 ruby = "latest"
 "npm:hookdeck-cli" = "latest"
 "npm:ghost-cli" = "latest"
+"npm:typescript" = "latest"
 "cargo:cargo-bump" = "latest"
 
 [settings]

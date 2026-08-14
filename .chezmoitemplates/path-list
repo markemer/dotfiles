@@ -1,3 +1,4 @@
+{{ .chezmoi.homeDir }}/.rclone/bin
 {{ .chezmoi.homeDir }}/.cargo/bin
 {{ .chezmoi.homeDir }}/.local/bin
 {{ .chezmoi.homeDir }}/.atuin/bin

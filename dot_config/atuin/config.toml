@@ -40,6 +40,10 @@
 ## possible values: prefix, fulltext, fuzzy, skim
 search_mode = "daemon-fuzzy"
 
+[daemon]
+enabled = true
+autostart = true
+
 ## which filter mode to use
 ## possible values: global, host, session, directory
 # filter_mode = "global"

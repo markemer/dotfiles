@@ -1,0 +1,6 @@
+TODAY=$(date '+%F')
+
+rclone sync /Users/mark/Documents b2:Romana-DataSync/Documents \
+    --delete-excluded \
+    --filter-from "{{ .chezmoi.homeDir }}/.config/rclone/rclone.ignore" \
+    --combined "{{ .chezmoi.homeDir }}/.local/log/rclone/${TODAY}-documents-clone.log"

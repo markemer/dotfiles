@@ -16,6 +16,15 @@ function codep() {
     /usr/local/bin/code $(port file ${portname})
 }
 
+function nvidep() {
+    local portname=$1
+    if [[ $portname == "" ]]; then
+        echo "Provide a portname"
+        return
+    fi
+    /Applications/Neovide.app/Contents/MacOS/neovide $(port file ${portname}) 
+}
+
 function cenv() {
     case "$1" in
     print)
@@ -86,5 +95,5 @@ function ppath() {
 }
 
 function nvide() {
-    /Applications/Neovide.app/Contents/MacOS/neovide $1 &
+    /Applications/Neovide.app/Contents/MacOS/neovide $* &
 }
