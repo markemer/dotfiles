@@ -1,4 +1,4 @@
 rclone sync "/Volumes/Data Core/Dropbox/HumbleBundleStuff" b2:Romana-DataSync/HumbleBundleBackup \
     --delete-excluded \
-    --filter-from "/Users/mark/.config/rclone/rclone.ignore" \
-    --combined "/Users/mark/.config/rclone/lastclone.log"
+    --filter-from "{{ .chezmoi.homeDir  }}/.config/rclone/rclone.ignore" \
+    --combined "{{ .chezmoi.homeDir }}/.local/log/rclone/lastclone.log"
