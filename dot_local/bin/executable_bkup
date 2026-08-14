@@ -1,0 +1,25 @@
+#!/usr/bin/env just --justfile
+
+today := `date '+%F'`
+
+docs:
+   rclone sync /Users/mark/Documents b2:Romana-DataSync/Documents \
+        --delete-excluded \
+        --progress \
+        --filter-from "{{ home_directory() }}/.config/rclone/rclone.ignore" \
+        --combined "{{ home_directory() }}/.local/log/rclone/{{ today }}-documents-clone.log"
+
+attic:
+    rclone sync "/Volumes/Data Core/Attic" /Users/mark/Documents b2:Romana-DataSync/Attic \
+        --delete-excluded \
+        --progress \
+        --filter-from "{{ home_directory() }}/.config/rclone/rclone.ignore" \
+        --combined "{{ home_directory() }}/.local/log/rclone/{{ today }}-documents-clone.log"
+
+humblestuff:
+    rclone sync "/Volumes/Data Core/Dropbox/HumbleBundleStuff" b2:Romana-DataSync/HumbleBundleBackup \
+        --delete-excluded \
+        --progress \
+        --filter-from "{{ home_directory() }}/.config/rclone/rclone.ignore" \
+        --combined "{{ home_directory() }}/.local/log/rclone/{{ today }}-humble-clone.log"
+

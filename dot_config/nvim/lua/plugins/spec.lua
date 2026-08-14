@@ -19,5 +19,9 @@ return {
         config = function()
             require("nvim-tree").setup {}
         end,
+    },
+    {
+        "NoahTheDuke/vim-just",
+        ft = { "just" },
     }
 }

@@ -1,6 +1,0 @@
-TODAY=$(date '+%F')
-
-rclone sync "/Volumes/Data Core/Attic" b2:Romana-DataSync/Attic \
-    --delete-excluded \
-    --filter-from "{{ .chezmoi.homeDir }}/.config/rclone/rclone.ignore" \
-    --combined "{{ .chezmoi.homeDir }}/.local/log/rclone/${TODAY}-attic-clone.log"
