@@ -1,25 +1,26 @@
 #!/usr/bin/env just --justfile
 
+set unstable
+set lists
+
 today := `date '+%F'`
+ignore_file := home_directory() / ".config/rclone/rclone.ignore"
+log_file(name) := f"--combined {{ home_directory() }}/.local/log/rclone/{{ today }}-{{ name }}-clone.log"  
+
+params := ["--delete-excluded", "--progress", "--filter-from " + ignore_file]
 
 docs:
-   rclone sync /Users/mark/Documents b2:Romana-DataSync/Documents \
-        --delete-excluded \
-        --progress \
-        --filter-from "{{ home_directory() }}/.config/rclone/rclone.ignore" \
-        --combined "{{ home_directory() }}/.local/log/rclone/{{ today }}-documents-clone.log"
+   rclone sync /Users/mark/Documents b2:Romana-DataSync/Documents {{ params }} {{ log_file("docs") }} 
+
+pictures:
+    rclone sync /Users/mark/Pictures b2:Romana-DataSync/Pictures {{ params }} {{ log_file("pictures") }} 
+
+music:
+    rclone sync /Users/mark/Music b2:Romana-DataSync/Music {{ params }} {{ log_file("music") }} 
 
 attic:
-    rclone sync "/Volumes/Data Core/Attic" /Users/mark/Documents b2:Romana-DataSync/Attic \
-        --delete-excluded \
-        --progress \
-        --filter-from "{{ home_directory() }}/.config/rclone/rclone.ignore" \
-        --combined "{{ home_directory() }}/.local/log/rclone/{{ today }}-documents-clone.log"
+    rclone sync "/Volumes/Data Core/Attic" /Users/mark/Documents b2:Romana-DataSync/Attic {{ params }} {{ log_file("attic") }} 
 
 humblestuff:
-    rclone sync "/Volumes/Data Core/Dropbox/HumbleBundleStuff" b2:Romana-DataSync/HumbleBundleBackup \
-        --delete-excluded \
-        --progress \
-        --filter-from "{{ home_directory() }}/.config/rclone/rclone.ignore" \
-        --combined "{{ home_directory() }}/.local/log/rclone/{{ today }}-humble-clone.log"
+    rclone sync "/Volumes/Data Core/Dropbox/HumbleBundleStuff" b2:Romana-DataSync/HumbleBundleBackup {{ params }} {{ log_file("hb") }} 
 
