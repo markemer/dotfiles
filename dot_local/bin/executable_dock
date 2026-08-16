@@ -1,0 +1,9 @@
+#!/usr/bin/env just --justfile
+# vim: set ft=just:
+
+fix-mp-metal:
+    # xcodebuild -downloadComponent MetalToolchain
+    # sudo diskutil eject $(xcodebuild -showComponent MetalToolchain | sed -E -n -e 's/^Toolchain Search Path: (.*)$/\1/p')
+    sudo --user=macports xcodebuild -showComponent MetalToolchain
+    sudo rm -f "$(sudo --user=macports getconf DARWIN_USER_TEMP_DIR)/xcrun_db"
+

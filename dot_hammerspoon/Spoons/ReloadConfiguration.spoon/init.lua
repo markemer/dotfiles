@@ -14,7 +14,6 @@ obj.author = "Jon Lorusso <jonlorusso@gmail.com>"
 obj.homepage = "https://github.com/Hammerspoon/Spoons"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
-
 --- ReloadConfiguration.watch_paths
 --- Variable
 --- List of directories to watch for changes, defaults to hs.configdir

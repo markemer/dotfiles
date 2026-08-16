@@ -10,7 +10,7 @@ return {
         end,
     },
     {
-        "nvim-tree/nvim-tree.lua",
+        'nvim-tree/nvim-tree.lua',
         version = "*",
         lazy = false,
         dependencies = {
@@ -21,7 +21,24 @@ return {
         end,
     },
     {
-        "NoahTheDuke/vim-just",
+        'NoahTheDuke/vim-just',
         ft = { "just" },
-    }
+    },
+    {
+        'xvzc/chezmoi.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+        require("chezmoi").setup {
+            -- your configurations
+        }
+        end,
+    },
+    {
+        'nvim-telescope/telescope.nvim', version = '*',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            -- optional but recommended
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
+    },
 }

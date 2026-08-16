@@ -173,7 +173,8 @@ common_subcommands = [
  "kubectl",
  "sport",
  "port",
- "npx"
+ "npx",
+ "chezmoi"
 ]
 #
 # Set commands that should be totally stripped and ignored from stats
