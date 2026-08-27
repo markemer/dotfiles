@@ -19,7 +19,7 @@ music:
     rclone sync /Users/mark/Music b2:Romana-DataSync/Music {{ params }} {{ log_file("music") }} 
 
 attic:
-    rclone sync "/Volumes/Data Core/Attic" /Users/mark/Documents b2:Romana-DataSync/Attic {{ params }} {{ log_file("attic") }} 
+    rclone sync "/Volumes/Data Core/Attic" b2:Romana-DataSync/Attic {{ params }} {{ log_file("attic") }} 
 
 humblestuff:
     rclone sync "/Volumes/Data Core/Dropbox/HumbleBundleStuff" b2:Romana-DataSync/HumbleBundleBackup {{ params }} {{ log_file("hb") }} 

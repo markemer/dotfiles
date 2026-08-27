@@ -1,3 +1,6 @@
+# ZSH Options
+setopt extendedglob
+
 # Set this before oh-my-zsh to move zcompdump files
 export ZSH_COMPDUMP={{ .chezmoi.homeDir }}/cache/zsh/.zcompdump-$HOST
 
@@ -51,7 +54,7 @@ autoload -- {{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom/[^_]*(:t)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 {{- if eq .chezmoi.os "darwin" }}
-plugins=(git macos iterm2 emer)
+plugins=(git macos iterm2 gitignore emer)
 {{ else if eq .chezmoi.os "linux" }}
 plugins=(git emer)
 {{ end }}
