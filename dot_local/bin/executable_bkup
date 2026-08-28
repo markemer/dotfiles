@@ -9,6 +9,8 @@ log_file(name) := f"--combined {{ home_directory() }}/.local/log/rclone/{{ today
 
 params := ["--delete-excluded", "--progress", "--filter-from " + ignore_file]
 
+default: docs pictures music
+
 docs:
    rclone sync /Users/mark/Documents b2:Romana-DataSync/Documents {{ params }} {{ log_file("docs") }} 
 
