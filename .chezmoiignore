@@ -2,3 +2,16 @@ README.md
 .oh-my-zsh/cache/completions
 .oh-my-zsh/cache/grep-alias
 internal/**
+
+{{- if eq .chezmoi.os "linux" }}
+.chezmoitemplates/darwin-aliases
+dot_config/iterm2
+dot_config/iterm2/**
+dot_config/private_karabiner
+dot_hammerspoon
+dot_hammerspoon/**
+dot_local/bin/executable_bkup
+dot_local/bin/executable_dock
+dot_local/lib/zsh-custom/plugins/emer/**
+dot_lldbinit.tmpl
+{{ end }}

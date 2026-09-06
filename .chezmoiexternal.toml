@@ -4,6 +4,7 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+{{ if eq .chezmoi.os "darwin" }}
 [".chisel"]
     type = "archive"
     url = "https://github.com/facebook/chisel/archive/main.tar.gz"
@@ -17,3 +18,4 @@
     stripComponents = 1
     refreshPeriod = "168h"
     include = [ "*/lldb_commands/**" ]
+{{ end }}

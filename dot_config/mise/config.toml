@@ -19,6 +19,6 @@ ruby = "latest"
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
 ignored_config_paths = [
-  "/Users/mark/.local/config/share/chezmoi/dot_config/mise",
+  "{{ .chezmoi.homeDir }}/.local/config/share/chezmoi/dot_config/mise",
 ]
 experimental = true
