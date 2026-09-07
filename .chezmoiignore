@@ -4,14 +4,13 @@ README.md
 internal/**
 
 {{- if eq .chezmoi.os "linux" }}
-.chezmoitemplates/darwin-aliases
-dot_config/iterm2
-dot_config/iterm2/**
-dot_config/private_karabiner
-dot_hammerspoon
-dot_hammerspoon/**
-dot_local/bin/executable_bkup
-dot_local/bin/executable_dock
-dot_local/lib/zsh-custom/plugins/emer/**
-dot_lldbinit.tmpl
-{{ end }}
+.config/iterm2
+.config/iterm2/**
+.config/karabiner
+.hammerspoon
+.hammerspoon/**
+.local/bin/executable_bkup
+.local/bin/executable_dock
+.local/lib/zsh-custom/plugins/emer/**
+.lldbinit.tmpl
+{{- end }}
