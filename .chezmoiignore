@@ -12,5 +12,5 @@ internal/**
 .local/bin/executable_bkup
 .local/bin/executable_dock
 .local/lib/zsh-custom/plugins/emer/**
-.lldbinit.tmpl
+.lldbinit
 {{- end }}

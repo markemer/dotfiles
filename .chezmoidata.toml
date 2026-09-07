@@ -1,1 +1,2 @@
-[paths]
+libpath='.local/lib'
+etcpath='.local/etc'
