@@ -19,7 +19,8 @@ DISABLE_AUTO_UPDATE="true"
 {{- if eq .chezmoi.os "darwin" }}
 ## Variables
 # Port Installed Java Names: openjdk17-temurin
-export JAVA_NAME=openjdk17-temurin
+#export JAVA_NAME=openjdk17-temurin
+export JAVA_NAME=jdk-25-macports.jdk
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
 export GOROOT={{ .goroot }}
