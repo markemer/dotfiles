@@ -1,0 +1,4 @@
+{{- if eq .chezmoi.os "linux" }}
+#!/bin/bash
+dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:nocaps']"
+{{- end }}
