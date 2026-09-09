@@ -23,7 +23,7 @@ DISABLE_AUTO_UPDATE="true"
 export JAVA_NAME=jdk-25-macports.jdk
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/${JAVA_NAME}/Contents/Home"
 
-export GOROOT={{ .goroot }}
+export GOROOT={{ .paths.goroot }}
 export GOPATH=$GOROOT
 {{ end }}
 

@@ -1,6 +1,7 @@
 [paths]
     opt = "/opt"
     usrlocal = "/usr/local"
+    goroot = "/opt/go"
 
 [paths.local]
     bin   = ".local/bin"
