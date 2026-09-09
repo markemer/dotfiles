@@ -11,7 +11,7 @@ ZSH={{ .chezmoi.homeDir }}/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Tell ZSH where to look for custom plugins
-ZSH_CUSTOM={{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom
+ZSH_CUSTOM={{ .chezmoi.homeDir }}/{{ .paths.local.lib }}/zsh-custom
 
 # Tell Oh-My-ZSH not to check, chezmoi will update
 DISABLE_AUTO_UPDATE="true"
@@ -48,8 +48,8 @@ fi
 export EDITOR='nvim'
 
 # Autoload all of our local functions
-fpath=({{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom $fpath)
-autoload -- {{ .chezmoi.homeDir }}/{{ .libpath }}/zsh-custom/[^_]*(:t)
+fpath=({{ .chezmoi.homeDir }}/{{ .paths.local.lib }}/zsh-custom $fpath)
+autoload -- {{ .chezmoi.homeDir }}/{{ .paths.local.lib }}/zsh-custom/[^_]*(:t)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/

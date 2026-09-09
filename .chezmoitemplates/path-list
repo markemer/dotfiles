@@ -1,14 +1,12 @@
-{{ .chezmoi.homeDir }}/.rclone/bin
-{{ .chezmoi.homeDir }}/.cargo/bin
-{{ .chezmoi.homeDir }}/.local/bin
-{{ .chezmoi.homeDir }}/.atuin/bin
+{{ .chezmoi.homeDir }}/{{ .paths.local.cargo }}
+{{ .chezmoi.homeDir }}/{{ .paths.local.bin }}
 {{ if eq .chezmoi.os "darwin" -}}
-{{ .optpath }}/bin
-{{ .optpath }}/local/bin
-{{ .optpath }}/local/libexec/gnubin
+{{ .paths.opt }}/bin
+{{ .paths.opt }}/local/bin
+{{ .paths.opt }}/local/libexec/gnubin
 {{ .chezmoi.homeDir }}/Library/Android/sdk/platform-tools
-{{ .apppath }}/Obsidian.app/Contents/MacOS
-{{ .usrlocal }}/share/dotnet
+{{ .paths.apple.app }}/Obsidian.app/Contents/MacOS
+{{ .paths.usrlocal }}/share/dotnet
 {{ output "cat" "/etc/paths" -}}
-{{ .optpath }}/flutter/bin
+{{ .paths.opt }}/flutter/bin
 {{- end -}}

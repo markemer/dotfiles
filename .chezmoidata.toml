@@ -1,2 +1,14 @@
-libpath='.local/lib'
-etcpath='.local/etc'
+[paths]
+    opt = "/opt"
+    usrlocal = "/usr/local"
+
+[paths.local]
+    bin   = ".local/bin"
+    lib   = ".local/lib"
+    etc   = ".local/etc"
+    cargo = ".cargo/bin"
+    lldb  = ".local/share/mea-lldb"
+
+[paths.apple]
+    appsupport = "Library/Application Support"
+    app = "/Applications"
